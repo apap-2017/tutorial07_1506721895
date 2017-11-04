@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View All Courses</title>
+        <div th:replace="fragments/fragment :: link"></div>
+    </head>
+    
+    <body>
+    <h1>All Courses</h1>
+    		<div th:replace="fragments/fragment ::header"></div>
+        <table class="table table-stripe display" id="tableCourse">
+        		<thead>
+        			<th>No.</th>
+        			<th>Id Course</th>
+        			<th>Name</th>
+        			<th>Credits</th>
+        		</thead>
+        		<tbody>
+        		<div th:each="course,iterationStatus: ${courses}" >
+        			
+           	<tr>	<td><h3 th:text="${iterationStatus.count}">No.</h3></td>
+	       		<td><h3 th:text="${course.idCourse}">Course id</h3></td>
+	       		<td><h3 th:text="${course.name}">Course Name</h3></td>
+	       		<td><h3 th:text="${course.credits}">Course credits</h3></td>
+        			</tr>
+        			</div>
+        		</tbody>
+          </table>
+          <div th:replace="fragments/fragment ::footer"></div>
+    </body>
+</html>

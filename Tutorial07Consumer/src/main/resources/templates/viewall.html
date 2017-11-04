@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View All Students</title>
+        <div th:replace="fragments/fragment :: link"></div>
+    </head>
+    
+    <body>
+    <h1>All Students</h1>
+    		<div th:replace="fragments/fragment ::header"></div>
+        <table class="table table-stripe display" id="tableStudent">
+        		<thead>
+        			<th>No.</th>
+        			<th>NPM</th>
+        			<th>Nama</th>
+        			<th>GPA</th>
+        			<th>Status IPK</th>
+        			<th>Delete</th>
+        			<th>Update</th>
+        		</thead>
+        		<tbody>
+        		<div th:each="student,iterationStatus: ${students}" th:class="${iterationStatus.odd}? 'odd'" >
+        			<tr>
+           		<td><h3 th:text="'No. ' + ${iterationStatus.count}">No.</h3></td>
+	       		<td><h3 th:text="'NPM = ' + ${student.npm}">Student NPM</h3></td>
+	       		<td><h3 th:text="'Name = ' + ${student.name}">Student Name</h3></td>
+	       		<td><h3 th:text="'GPA = ' + ${student.gpa}">Student GPA</h3></td>
+	       		<td><h3 th:text="${student.gpa} >=3.49 ? 'CumLaude' : 'Sangat Memuaskan'"></h3></td>
+				<td><button><a th:href="'/student/delete/' + ${student.npm}" > Delete Data</a></button></td> 
+	       		<td><button><a th:href="'/student/update/' + ${student.npm}">Update Data</a></button></td>
+        			</tr>
+        			</div>
+        		</tbody>
+          </table>
+          <div th:replace="fragments/fragment ::footer"></div>
+    </body>
+</html>
